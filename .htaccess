@@ -1,0 +1,41 @@
+# Gamondes Conseils — gamondesconseils.com
+Options -Indexes
+DirectoryIndex index.php
+ErrorDocument 404 /404.php
+AddDefaultCharset UTF-8
+
+RewriteEngine On
+
+# ── Canonical address: https://gamondesconseils.com/ (http:// and www. redirect here) ──
+# Never for the certificate validation path (Let's Encrypt renews through it).
+RewriteCond %{REQUEST_URI} !^/\.well-known/
+RewriteCond %{HTTP_HOST} ^(www\.)?gamondesconseils\.com$ [NC]
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^(.*)$ https://gamondesconseils.com/$1 [R=301,L]
+
+# ── Old site addresses → the single page ──
+RewriteRule ^accueil/?(.*)$ / [R=301,L]
+RewriteRule ^index\.(htm|html)$ / [R=301,L]
+
+# ── Internal files are never served directly ──
+RewriteRule ^(inc|lang)(/|$) - [R=404,L]
+
+# ── Security headers ──
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Header always set Content-Security-Policy "default-src 'self'; img-src 'self'; font-src 'self'; style-src 'self'; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none'; frame-ancestors 'self'"
+    Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
+</IfModule>
+
+# ── Static files cached (CSS is versioned with ?v=) ──
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+</IfModule>
