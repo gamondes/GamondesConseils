@@ -8,4 +8,4 @@ One-page site (French by default, `?lang=en`), same base as the Assist landing (
 - No cookie, no form, no third-party call: fonts (`assets/fonts`) and images are served by the site.
 - `.htaccess`: https + bare domain, old `/accueil` → `/`, security headers.
 
-Deploy: upload the whole folder to the web root. Before going live, fill the legal notice in `inc/site.php`.
+Deploy: upload the whole folder to the web root.

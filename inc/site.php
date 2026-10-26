@@ -11,7 +11,7 @@ const SITE = [
     'origin'   => 'https://gamondesconseils.com',
 
     // Contact — an address on the domain (credibility). Shown on the page and in the legal notice.
-    'email'    => 'info@gamondesconseils.com',          // TO CONFIRM
+    'email'    => 'info@gamondesconseils.com',
     'linkedin' => '',                                   // TO COMPLETE: https://www.linkedin.com/in/…
 
     // Parcours
@@ -32,16 +32,17 @@ const SITE = [
 
     'assist'   => 'https://pihassist.com',
 
-    // Legal notice (mentions légales, LCEN art. 6) — every field is REQUIRED before going live.
+    // Legal notice (mentions légales, LCEN art. 6) — from the RNE extract of 13/02/2024.
+    // Individual business (EI): no share capital, no RCS; "EI" must follow the name (law of 14/02/2022).
     'legal' => [
-        'company'   => 'Gamondes Conseils',
-        'form'      => '',     // TO COMPLETE: SASU, EURL, entreprise individuelle…
-        'capital'   => '',     // TO COMPLETE (companies only), e.g. '1 000 €'
-        'address'   => '',     // TO COMPLETE: registered office
-        'siren'     => '',     // TO COMPLETE: SIREN / RCS (e.g. 'RCS Paris 123 456 789')
-        'vat'       => '',     // TO COMPLETE if any
+        'company'   => 'Aymeric Gamondes EI — nom commercial Gamondes Conseils',
+        'form'      => 'Entrepreneur individuel',
+        'capital'   => '',
+        'address'   => '25 avenue des Mimosas, 92100 Boulogne-Billancourt, France',
+        'siren'     => 'SIRET 984 556 688 00013 — APE 7022Z',
+        'vat'       => '',     // only if the business has an intra-EU VAT number
         'publisher' => 'Aymeric Gamondes',
-        'host'      => 'OVH SAS, 2 rue Kellermann, 59100 Roubaix, France — +33 9 72 10 10 07',   // TO CONFIRM
+        'host'      => 'OVH SAS, 2 rue Kellermann, 59100 Roubaix, France — +33 9 72 10 10 07',
     ],
 ];
 
