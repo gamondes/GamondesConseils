@@ -2,8 +2,8 @@
 /* English texts. Same keys as fr.php. */
 return [
     // SEO
-    'meta_title'       => 'Aymeric Gamondes — Health · Operations · International | Gamondes Conseils',
-    'meta_desc'        => 'An emergency nurse by training, Aymeric Gamondes works on development projects in healthcare and medical operations, in France and internationally. Co-founder of Assist.',
+    'meta_title'       => 'Gamondes Conseils — Medical operations · Health · International',
+    'meta_desc'        => 'Gamondes Conseils supports development projects in medical operations and healthcare, in France and internationally. Founded by Aymeric Gamondes, an emergency nurse by training and co-founder of Assist.',
     'meta_title_legal' => 'Legal notice — Gamondes Conseils',
     'meta_desc_legal'  => 'Legal notice of gamondesconseils.com.',
     'meta_title_priv'  => 'Privacy policy — Gamondes Conseils',
@@ -11,59 +11,92 @@ return [
     'meta_title_404'   => 'Page not found — Gamondes Conseils',
 
     // Navigation
-    'nav_what'    => 'What I do',
+    'nav_ops'     => 'Medical operations',
+    'nav_how'     => 'Approach',
     'nav_path'    => 'Background',
     'nav_build'   => 'Assist',
     'nav_contact' => 'Write',
+    'nav_menu'    => 'Menu',
+    'nav_main'    => 'Main navigation',
 
     // Hero
-    'hero_label'   => 'Gamondes Conseils',
-    'hero_tagline' => 'Health · Operations · International',
-    'hero_sub'     => 'An emergency nurse by training, I now work on development projects in healthcare and medical operations, in France and internationally.',
-    'hero_cta'     => 'Write',
-    'hero_alt'     => 'Paramedic seen from behind, at night, in front of an emergency vehicle',
+    'hero_label' => 'Medical operations',
+    'hero_h1'    => 'Medical operations that hold up in the field.',
+    'hero_sub'   => 'Gamondes Conseils supports development projects in healthcare and medical operations, in France and internationally.',
+    'hero_cta'   => 'Write',
+    'hero_link1' => 'The approach',
+    'hero_link2' => 'Background',
+    'hero_alt'   => 'Aerial view at night of an emergency response',
 
-    // What I do
-    'what_label' => 'What I do',
-    'what_h'     => 'Where healthcare meets operations.',
-    'what_p1'    => 'I work on projects where healthcare meets operations. Spotting a need that is not yet met, discussing it with the right people, then designing what it takes for the project to hold up in the field.',
-    'what_p2_isos' => 'I currently do this for International SOS and for a deliberately small number of other partners.',
-    'what_p2'      => 'I currently do this for a deliberately small number of partners.',
+    // Medical operations
+    'ops_label' => 'Medical operations',
+    'ops_h'     => 'Where healthcare meets operations.',
+    'ops_intro' => 'A medical project is not judged on paper but in the field: when care has to be delivered far from a hospital, with the means at hand and the constraints of the operation.',
+    'ops1_t'    => 'Open',
+    'ops1'      => 'Spot a need that is not yet met, and put it in front of the right people.',
+    'ops2_t'    => 'Design',
+    'ops2'      => 'Shape the medical set-up, the organisation and the teams, so the project holds up in the field and not only on paper.',
+    'ops3_t'    => 'Make it hold',
+    'ops3'      => 'Put in place the tools, routines and follow-up that let the set-up last.',
+
+    // Statement (photo)
+    'field_h'   => 'Away from the hospital, the standard does not drop. It changes shape.',
+    'field_alt' => 'Paramedic seen from behind, at night, in front of an emergency vehicle',
+
+    // Approach
+    'how_label' => 'Approach',
+    'how_h'     => 'A way of working.',
+    'how1_t'    => 'Few projects at a time',
+    'how1'      => 'To be fully committed, from the first conversation to the field.',
+    'how2_t'    => 'A single point of contact',
+    'how2'      => 'You deal with the person who designs the set-up and follows it through.',
+    'how3_t'    => 'Tailored terms',
+    'how3'      => 'They are agreed together, project by project.',
 
     // Background
     'path_label'    => 'Background',
-    'path_h'        => 'From the field to operations.',
+    'path_role'     => 'Founder of Gamondes Conseils',
+    'path_intro'    => 'A path built close to patient care first, then to operations.',
     'path_sport_t'  => 'Sport',
     'path_sport'    => '%s, at a high level.',
     'path_urg_t'    => 'Emergency care',
-    'path_urg'      => 'Emergency nurse, with a university degree in life-threatening emergencies and clinical research. Missions in France and abroad, including Roland-Garros.',
+    'path_urg'      => 'Emergency nurse, with a university degree in life-threatening emergencies and clinical research.',
+    'path_exc_t'    => 'Exceptional missions',
+    'path_exc'      => 'Highly demanding missions outside the hospital, in France and abroad.',
     'path_ops_t'    => 'Operations',
-    'path_ops'      => 'Medical Operations Manager. Medical cover of a nuclear power plant in China during the Covid pandemic.',
+    'path_ops'      => 'Medical Operations Manager: medical cover of a nuclear power plant in China during the Covid pandemic.',
+    'path_ent_t'    => 'Building',
+    'path_ent'      => 'Founder of a digital health platform, then co-founder of Assist.',
     'path_now_t'    => 'Today',
-    'path_now_isos' => 'International projects for International SOS. Co-founder of Assist.',
-    'path_now'      => 'International projects in healthcare and medical operations. Co-founder of Assist.',
-    'path_press'    => 'Read the Dauphiné Libéré article (French)',
-    'path_podcast'  => 'Listen to the Med It Through podcast (French)',
+    'path_now_isos' => 'International projects for International SOS, and a deliberately small number of other partners.',
+    'path_now'      => 'International projects in healthcare and medical operations, for a deliberately small number of partners.',
     'path_portrait' => 'Portrait of Aymeric Gamondes',
-
-    // How I work
-    'how_label' => 'How I work',
-    'how_p'     => 'I take on few projects at a time, and never for two direct competitors. The terms are agreed together, project by project.',
 
     // What I build
     'build_label' => 'What I build',
     'build_h'     => 'Opening a mission also means making it hold.',
     'build_p'     => 'I co-founded Assist, the platform that lets organisations mobilise, deploy and follow their medical teams, from offshore to humanitarian work.',
     'build_cta'   => 'Discover Assist',
+    'build_alt'   => 'Offshore platform at night',
+
+    // Press
+    'press_label' => 'In the press',
+    'press1_src'  => 'Le Dauphiné Libéré (French)',
+    'press1_t'    => 'Portrait of an emergency nurse on exceptional missions.',
+    'press1_cta'  => 'Read the article',
+    'press2_src'  => 'Med It Through podcast (French)',
+    'press2_t'    => '“Experience as an asset, willpower as a driving force.”',
+    'press2_cta'  => 'Listen to the episode',
 
     // Field notes
     'notes_label' => 'Field notes',
     'notes_p'     => 'What I learn from medical operations on mission.',
-    'notes_read'  => 'Read on LinkedIn',
 
     // Contact
     'contact_label' => 'Contact',
+    'contact_h'     => 'Let\'s talk about your project.',
     'contact_p'     => 'I answer personally.',
+    'contact_alt'   => 'Paramedic checking a tablet in a helicopter cabin',
 
     // Footer
     'foot_legal'   => 'Legal notice',

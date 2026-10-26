@@ -1,8 +1,9 @@
 <?php
 /**
  * Shared page frame: <head> (SEO), navigation bar, footer.
- * Same structure as the Assist landing (pihassist.com): dark editorial sections,
- * Barlow Condensed titles, Roboto text — fonts served from this site (no third party).
+ * Copied from the Assist landing (pihassist.com): transparent navbar over the photo that turns
+ * into a floating glass capsule once scrolled (logo + one call to action), editorial photo
+ * sections, Barlow Condensed / Roboto — fonts served from this site (no third party).
  */
 require_once __DIR__ . '/site.php';
 
@@ -13,29 +14,32 @@ require_once __DIR__ . '/site.php';
 function pageStart(array $o): void
 {
     global $lang;
+    $home   = !empty($o['home']);
     $page   = SITE['origin'] . '/' . $o['path'];
     $canon  = $page . ($lang === 'en' ? '?lang=en' : '');
     $title  = t($o['title']);
     $desc   = t($o['desc']);
     $robots = !empty($o['noindex']) ? 'noindex,follow' : 'index,follow,max-image-preview:large';
-    $image  = SITE['origin'] . '/assets/img/field.jpg';
+    $image  = SITE['origin'] . '/assets/img/operations.jpg';
+    $anchor = fn(string $id) => $home ? '#' . $id : url() . '#' . $id;
 
     $ld = null;
-    if (!empty($o['home'])) {
+    if ($home) {
+        $org = [
+            '@type' => 'ProfessionalService', '@id' => SITE['origin'] . '/#org', 'name' => 'Gamondes Conseils',
+            'url' => SITE['origin'] . '/', 'logo' => SITE['origin'] . '/assets/img/favicon.png',
+            'description' => html_entity_decode($desc, ENT_QUOTES, 'UTF-8'),
+            'founder' => ['@id' => SITE['origin'] . '/#aymeric'],
+        ];
+        if (SITE['email'] !== '') $org['email'] = SITE['email'];
         $person = [
             '@type' => 'Person', '@id' => SITE['origin'] . '/#aymeric', 'name' => 'Aymeric Gamondes',
-            'jobTitle' => strip_tags(t('hero_tagline')), 'url' => SITE['origin'] . '/',
+            'jobTitle' => html_entity_decode(t('path_role'), ENT_QUOTES, 'UTF-8'), 'url' => SITE['origin'] . '/',
             'image' => SITE['origin'] . '/assets/img/aymeric-gamondes.jpg',
             'worksFor' => ['@id' => SITE['origin'] . '/#org'],
             'sameAs' => array_values(array_filter([SITE['linkedin'], SITE['press']['podcast']])),
         ];
-        $org = [
-            '@type' => 'ProfessionalService', '@id' => SITE['origin'] . '/#org', 'name' => 'Gamondes Conseils',
-            'url' => SITE['origin'] . '/', 'logo' => SITE['origin'] . '/assets/img/favicon.png',
-            'founder' => ['@id' => SITE['origin'] . '/#aymeric'],
-        ];
-        if (SITE['email'] !== '') $org['email'] = SITE['email'];
-        $ld = json_encode(['@context' => 'https://schema.org', '@graph' => [$person, $org]],
+        $ld = json_encode(['@context' => 'https://schema.org', '@graph' => [$org, $person]],
             JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP);
     }
     ?>
@@ -51,7 +55,7 @@ function pageStart(array $o): void
     <link rel="alternate" hreflang="fr" href="<?= e($page) ?>">
     <link rel="alternate" hreflang="en" href="<?= e($page . '?lang=en') ?>">
     <link rel="alternate" hreflang="x-default" href="<?= e($page) ?>">
-    <meta property="og:type" content="<?= !empty($o['home']) ? 'profile' : 'website' ?>">
+    <meta property="og:type" content="website">
     <meta property="og:site_name" content="Gamondes Conseils">
     <meta property="og:title" content="<?= $title ?>">
     <meta property="og:description" content="<?= $desc ?>">
@@ -63,35 +67,50 @@ function pageStart(array $o): void
     <link rel="icon" type="image/png" href="/assets/img/favicon.png">
     <link rel="apple-touch-icon" href="/assets/img/favicon.png">
     <link rel="preload" href="/assets/fonts/BarlowCondensed-600.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/css/site.css?v=1">
+    <link rel="stylesheet" href="/assets/css/site.css?v=2">
     <script>document.documentElement.classList.add('js');</script>
     <?php if ($ld): ?><script type="application/ld+json"><?= $ld ?></script><?php endif; ?>
 </head>
 <body>
 
-<header class="navbar">
-    <a class="brand" href="<?= e(url()) ?>">
-        <img src="/assets/img/logo-white.png" width="28" height="28" alt="">
-        <span>Gamondes Conseils</span>
+<header class="navbar" id="navbar">
+    <a class="logo" href="<?= e(url()) ?>" aria-label="Gamondes Conseils">
+        <span class="brand">Gamondes</span>
+        <span class="subbrand">Conseils</span>
     </a>
-    <nav aria-label="<?= $lang === 'en' ? 'Main' : 'Navigation principale' ?>">
-        <?php if (!empty($o['home'])): ?>
-            <a class="nav-link" href="#what"><?= t('nav_what') ?></a>
-            <a class="nav-link" href="#path"><?= t('nav_path') ?></a>
-            <a class="nav-link" href="#build"><?= t('nav_build') ?></a>
-        <?php else: ?>
-            <a class="nav-link" href="<?= e(url()) ?>"><?= t('foot_home') ?></a>
-        <?php endif; ?>
-        <?php if (SITE['email'] !== ''): ?>
-            <a class="nav-cta" href="mailto:<?= e(SITE['email']) ?>"><?= t('nav_contact') ?></a>
-        <?php endif; ?>
-        <span class="lang">
-            <a href="<?= e(langUrl('fr')) ?>" <?= $lang === 'fr' ? 'aria-current="true"' : '' ?> lang="fr">FR</a>
-            <span aria-hidden="true">|</span>
-            <a href="<?= e(langUrl('en')) ?>" <?= $lang === 'en' ? 'aria-current="true"' : '' ?> lang="en">EN</a>
-        </span>
+    <button class="menu-toggle" type="button" aria-label="<?= t('nav_menu') ?>" aria-expanded="false" aria-controls="mobile-menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav aria-label="<?= t('nav_main') ?>">
+        <ul class="menu-items">
+            <li><a href="<?= e($anchor('operations')) ?>"><?= t('nav_ops') ?></a></li>
+            <li><a href="<?= e($anchor('approach')) ?>"><?= t('nav_how') ?></a></li>
+            <li><a href="<?= e($anchor('path')) ?>"><?= t('nav_path') ?></a></li>
+            <li><a href="<?= e($anchor('assist')) ?>"><?= t('nav_build') ?></a></li>
+            <?php if (SITE['email'] !== ''): ?>
+                <li class="nav-keep"><a class="nav-cta" href="mailto:<?= e(SITE['email']) ?>"><?= t('nav_contact') ?></a></li>
+            <?php endif; ?>
+            <li class="lang-switcher">
+                <a href="<?= e(langUrl('fr')) ?>" lang="fr" <?= $lang === 'fr' ? 'class="lang-active" aria-current="true"' : '' ?>>FR</a>
+                <span class="lang-sep" aria-hidden="true">|</span>
+                <a href="<?= e(langUrl('en')) ?>" lang="en" <?= $lang === 'en' ? 'class="lang-active" aria-current="true"' : '' ?>>EN</a>
+            </li>
+        </ul>
     </nav>
 </header>
+
+<div class="mobile-menu" id="mobile-menu" hidden>
+    <ul>
+        <li><a href="<?= e($anchor('operations')) ?>"><?= t('nav_ops') ?> &rarr;</a></li>
+        <li><a href="<?= e($anchor('approach')) ?>"><?= t('nav_how') ?> &rarr;</a></li>
+        <li><a href="<?= e($anchor('path')) ?>"><?= t('nav_path') ?> &rarr;</a></li>
+        <li><a href="<?= e($anchor('assist')) ?>"><?= t('nav_build') ?> &rarr;</a></li>
+        <?php if (SITE['email'] !== ''): ?><li><a href="mailto:<?= e(SITE['email']) ?>"><?= t('nav_contact') ?> &rarr;</a></li><?php endif; ?>
+        <li class="mobile-lang">
+            <a href="<?= e(langUrl('fr')) ?>" lang="fr">FR</a> <span aria-hidden="true">|</span> <a href="<?= e(langUrl('en')) ?>" lang="en">EN</a>
+        </li>
+    </ul>
+</div>
 
 <main>
     <?php
@@ -103,18 +122,44 @@ function pageEnd(): void
 </main>
 
 <footer class="footer">
-    <span>© <?= date('Y') ?> Gamondes Conseils</span>
+    <div class="footer-brand"><span class="brand">Gamondes</span> <span class="subbrand">Conseils</span></div>
     <nav aria-label="Footer">
         <a href="<?= e(url('mentions-legales/')) ?>"><?= t('foot_legal') ?></a>
         <a href="<?= e(url('politiquedeconfidentialite/')) ?>"><?= t('foot_privacy') ?></a>
         <?php if (SITE['linkedin'] !== ''): ?><a href="<?= e(SITE['linkedin']) ?>" rel="noopener">LinkedIn</a><?php endif; ?>
+        <a href="<?= e(SITE['assist']) ?>" rel="noopener">Assist</a>
     </nav>
+    <span class="footer-copy">© <?= date('Y') ?> Gamondes Conseils</span>
 </footer>
 
 <script>
-/* Reveal sections as they enter the screen (same as the Assist landing); content stays visible without JS */
-const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('is-visible'); io.unobserve(x.target); } }), { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+(function () {
+    /* Navbar: full at the top, then a compact floating capsule (logo + one call to action) — as on Assist.
+       Two thresholds so it does not flicker around the boundary. */
+    var bar = document.getElementById('navbar');
+    function update() {
+        var y = window.scrollY || window.pageYOffset, c = bar.classList.contains('navbar--compact');
+        if (!c && y > 80) bar.classList.add('navbar--compact');
+        else if (c && y < 40) bar.classList.remove('navbar--compact');
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+
+    /* Mobile menu */
+    var btn = bar.querySelector('.menu-toggle'), menu = document.getElementById('mobile-menu');
+    function close() { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+    btn.addEventListener('click', function () {
+        var open = menu.hidden; menu.hidden = !open; btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a') || e.target === menu) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+
+    /* Reveal sections as they enter the screen; content stays visible without JS */
+    var io = new IntersectionObserver(function (es) {
+        es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('is-visible'); io.unobserve(x.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+})();
 </script>
 </body>
 </html>

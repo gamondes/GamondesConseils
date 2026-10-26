@@ -1,9 +1,9 @@
 <?php
-/* Textes français (langue par défaut). Même clés dans en.php. */
+/* Textes français (langue par défaut). Mêmes clés dans en.php. */
 return [
     // SEO
-    'meta_title'       => 'Aymeric Gamondes — Santé · Opérations · International | Gamondes Conseils',
-    'meta_desc'        => 'Infirmier urgentiste de formation, Aymeric Gamondes travaille sur des projets de développement dans la santé et les opérations médicales, en France et à l\'international. Cofondateur d\'Assist.',
+    'meta_title'       => 'Gamondes Conseils — Opérations médicales · Santé · International',
+    'meta_desc'        => 'Gamondes Conseils accompagne des projets de développement dans les opérations médicales et la santé, en France et à l\'international. Fondé par Aymeric Gamondes, infirmier urgentiste de formation et cofondateur d\'Assist.',
     'meta_title_legal' => 'Mentions légales — Gamondes Conseils',
     'meta_desc_legal'  => 'Mentions légales du site gamondesconseils.com.',
     'meta_title_priv'  => 'Politique de confidentialité — Gamondes Conseils',
@@ -11,59 +11,92 @@ return [
     'meta_title_404'   => 'Page introuvable — Gamondes Conseils',
 
     // Navigation
-    'nav_what'    => 'Ce que je fais',
+    'nav_ops'     => 'Opérations médicales',
+    'nav_how'     => 'Approche',
     'nav_path'    => 'Parcours',
     'nav_build'   => 'Assist',
     'nav_contact' => 'Écrire',
+    'nav_menu'    => 'Menu',
+    'nav_main'    => 'Navigation principale',
 
-    // Hero
-    'hero_label'   => 'Gamondes Conseils',
-    'hero_tagline' => 'Santé · Opérations · International',
-    'hero_sub'     => 'Infirmier urgentiste de formation, je travaille aujourd\'hui sur des projets de développement dans la santé et les opérations médicales, en France et à l\'international.',
-    'hero_cta'     => 'Écrire',
-    'hero_alt'     => 'Secouriste de dos, de nuit, devant un véhicule d\'urgence',
+    // Hero — the subject first: medical operations
+    'hero_label' => 'Opérations médicales',
+    'hero_h1'    => 'Des opérations médicales qui tiennent sur le terrain.',
+    'hero_sub'   => 'Gamondes Conseils accompagne des projets de développement dans la santé et les opérations médicales, en France et à l\'international.',
+    'hero_cta'   => 'Écrire',
+    'hero_link1' => 'L\'approche',
+    'hero_link2' => 'Le parcours',
+    'hero_alt'   => 'Vue aérienne de nuit d\'une intervention de secours',
 
-    // Ce que je fais
-    'what_label' => 'Ce que je fais',
-    'what_h'     => 'Là où la santé rencontre les opérations.',
-    'what_p1'    => 'Je travaille sur des projets où la santé rencontre les opérations. Repérer un besoin qui n\'est pas encore servi, en parler avec les bonnes personnes, puis concevoir ce qu\'il faut pour que le projet tienne sur le terrain.',
-    'what_p2_isos' => 'Je le fais aujourd\'hui pour International SOS et pour un nombre volontairement restreint d\'autres partenaires.',
-    'what_p2'      => 'Je le fais aujourd\'hui pour un nombre volontairement restreint de partenaires.',
+    // Opérations médicales
+    'ops_label' => 'Opérations médicales',
+    'ops_h'     => 'Là où la santé rencontre les opérations.',
+    'ops_intro' => 'Un projet médical ne se juge pas sur le papier, mais sur le terrain : quand il faut soigner loin de l\'hôpital, avec les moyens du lieu et les contraintes de l\'opération.',
+    'ops1_t'    => 'Ouvrir',
+    'ops1'      => 'Repérer un besoin qui n\'est pas encore servi, et le poser devant les bonnes personnes.',
+    'ops2_t'    => 'Concevoir',
+    'ops2'      => 'Dessiner le dispositif médical, l\'organisation et les équipes, pour que le projet tienne sur le terrain et pas seulement sur le papier.',
+    'ops3_t'    => 'Faire tenir',
+    'ops3'      => 'Mettre en place les outils, les routines et le suivi qui permettent au dispositif de durer.',
+
+    // Statement (photo)
+    'field_h'   => 'Hors de l\'hôpital, l\'exigence ne baisse pas. Elle change de forme.',
+    'field_alt' => 'Secouriste de dos, de nuit, devant un véhicule d\'urgence',
+
+    // Approche
+    'how_label' => 'Approche',
+    'how_h'     => 'Une manière de travailler.',
+    'how1_t'    => 'Peu de projets à la fois',
+    'how1'      => 'Pour m\'y engager pleinement, du premier échange jusqu\'au terrain.',
+    'how2_t'    => 'Un interlocuteur unique',
+    'how2'      => 'Vous échangez avec la personne qui conçoit le dispositif et qui le suit.',
+    'how3_t'    => 'Des modalités sur mesure',
+    'how3'      => 'Elles se décident ensemble, selon le projet.',
 
     // Parcours
     'path_label'    => 'Parcours',
-    'path_h'        => 'Du terrain aux opérations.',
+    'path_role'     => 'Fondateur de Gamondes Conseils',
+    'path_intro'    => 'Une trajectoire construite au plus près des soins, puis des opérations.',
     'path_sport_t'  => 'Sport',
     'path_sport'    => '%s, à haut niveau.',
     'path_urg_t'    => 'Urgence',
-    'path_urg'      => 'Infirmier urgentiste, titulaire d\'un diplôme universitaire en urgences vitales et en recherche clinique. Missions en France et à l\'étranger, dont Roland-Garros.',
+    'path_urg'      => 'Infirmier urgentiste, titulaire d\'un diplôme universitaire en urgences vitales et en recherche clinique.',
+    'path_exc_t'    => 'Missions d\'exception',
+    'path_exc'      => 'Missions hors hospitalières de haute exigence, en France et à l\'étranger.',
     'path_ops_t'    => 'Opérations',
-    'path_ops'      => 'Medical Operations Manager. Médicalisation d\'une centrale nucléaire en Chine pendant la pandémie de Covid.',
+    'path_ops'      => 'Medical Operations Manager : médicalisation d\'une centrale nucléaire en Chine pendant la pandémie de Covid.',
+    'path_ent_t'    => 'Entreprendre',
+    'path_ent'      => 'Fondateur d\'une plateforme de santé numérique, puis cofondateur d\'Assist.',
     'path_now_t'    => 'Aujourd\'hui',
-    'path_now_isos' => 'Projets internationaux pour International SOS. Cofondateur d\'Assist.',
-    'path_now'      => 'Projets internationaux dans la santé et les opérations médicales. Cofondateur d\'Assist.',
-    'path_press'    => 'Lire l\'article du Dauphiné Libéré',
-    'path_podcast'  => 'Écouter le podcast Med It Through',
+    'path_now_isos' => 'Projets internationaux pour International SOS, et un nombre volontairement restreint d\'autres partenaires.',
+    'path_now'      => 'Projets internationaux dans la santé et les opérations médicales, pour un nombre volontairement restreint de partenaires.',
     'path_portrait' => 'Portrait d\'Aymeric Gamondes',
-
-    // Comment je travaille
-    'how_label' => 'Comment je travaille',
-    'how_p'     => 'Je m\'engage sur peu de projets à la fois, et jamais pour deux concurrents directs. Les modalités se décident ensemble, selon le projet.',
 
     // Ce que je construis
     'build_label' => 'Ce que je construis',
     'build_h'     => 'Ouvrir une mission, c\'est aussi savoir la faire tenir.',
     'build_p'     => 'J\'ai cofondé Assist, la plateforme qui permet aux organisations de mobiliser, déployer et suivre leurs équipes médicales, de l\'offshore à l\'humanitaire.',
     'build_cta'   => 'Découvrir Assist',
+    'build_alt'   => 'Plateforme offshore de nuit',
+
+    // Presse
+    'press_label' => 'Ils en ont parlé',
+    'press1_src'  => 'Le Dauphiné Libéré',
+    'press1_t'    => 'Portrait d\'un infirmier urgentiste en missions d\'exception.',
+    'press1_cta'  => 'Lire l\'article',
+    'press2_src'  => 'Podcast Med It Through',
+    'press2_t'    => '« L\'expérience comme richesse, la volonté comme moteur. »',
+    'press2_cta'  => 'Écouter l\'épisode',
 
     // Notes de terrain
     'notes_label' => 'Notes de terrain',
     'notes_p'     => 'Ce que j\'apprends des opérations médicales en mission.',
-    'notes_read'  => 'Lire sur LinkedIn',
 
     // Contact
     'contact_label' => 'Contact',
+    'contact_h'     => 'Parlons de votre projet.',
     'contact_p'     => 'Je réponds personnellement.',
+    'contact_alt'   => 'Secouriste consultant une tablette dans une cabine d\'hélicoptère',
 
     // Footer
     'foot_legal'   => 'Mentions légales',
